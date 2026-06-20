@@ -27,9 +27,9 @@ def update():
         "status": "success",
         "message": "Sensor data updated"
     })
-    @app.route("/api/sensors")
-    def get_sensors():
-        return jsonify(sensor_data)
+@app.route("/api/sensors")
+def get_sensors():
+    return jsonify(sensor_data)
 
 if __name__ == "__main__":
     import os
