@@ -586,3 +586,25 @@ startDemo();
 </script>
 </body>
 </html>
+<script>
+async function fetchSensorData() {
+    try {
+        const response = await fetch('/api/sensors');
+        const data = await response.json();
+
+        document.getElementById('tempVal').textContent = data.temp;
+        document.getElementById('humVal').textContent = data.humidity;
+        document.getElementById('co2Val').textContent = data.co2;
+        document.getElementById('luxVal').textContent = data.light;
+
+        document.getElementById('lastUpd').textContent =
+            new Date().toLocaleTimeString();
+
+    } catch (err) {
+        console.error("Error fetching sensor data:", err);
+    }
+}
+
+fetchSensorData();
+setInterval(fetchSensorData, 5000);
+ </script>
